@@ -1,0 +1,47 @@
+<div class="container product-detail p-4 mt-4 bg-light rounded shadow-sm">
+  <div class="row">
+    <div class="col">
+      <input [(ngModel)]="productNameKey" placeholder="Enter product ID" (keyup)="searchProductByNameKey()" class="form-control mb-3"  />
+      <div class="dropdown" *ngIf="productSuggestions.length > 0">
+        <ul class="dropdown-menu show w-100">
+          <li *ngFor="let product of productSuggestions" (click)="selectProduct(product)" class="dropdown-item">
+            {{ product.name }} - ${{ product.price }}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="row" *ngIf="products.length > 0">
+    <div class="col">
+      <h5>Selected Products</h5>
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Product Name</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Subtotal</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of products; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ product.name }}</td>
+            <td>
+              <input [(ngModel)]="quantities[product.id]" (change)="onQuantityChange(product.id, quantities[product.id])" type="number" min="1" class="form-control quantity-input" />
+            </td>
+            <td>${{ product.price }}</td>
+            <td>${{ product.price * (quantities[product.id] || 1) }}</td>
+            <td><button (click)="removeProduct(product.id)" class="btn btn-danger btn-sm">Remove</button></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="subtotal text-right">
+        <strong>Subtotal:</strong> ${{ subtotal }}
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+<div class="container customer-detail p-4 mt-4 bg-light rounded shadow-sm">
+  <div class="row">
+    <div class="col">
+      <input [(ngModel)]="keyword" placeholder="Enter customer name" (keyup)="searchCustomer()" class="form-control mb-3" />
+      <div class="dropdown" *ngIf="customerSuggestions.length > 0">
+        <ul class="dropdown-menu show w-100">
+          <li *ngFor="let customer of customerSuggestions" (click)="selectCustomer(customer)" class="dropdown-item">
+            {{ customer.customerName }} {{ customer.village }}
+          </li>
+        </ul>
+      </div>
+      <div *ngIf="selectedCustomer" class="customer-info p-3 bg-white rounded shadow-sm">
+        <p><strong> {{selectedCustomer.id +": " + selectedCustomer.customerName }}</strong></p>
+        <p><strong>Address:</strong> {{ selectedCustomer.village }}</p>
+        <p><strong>Contact:</strong> {{ selectedCustomer.contactNo }}</p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+.container {
+    max-width: 800px;
+    margin: auto;
+  }
+  
+  .form-control {
+    margin-bottom: 10px;
+  }
+  
+  .dropdown-menu {
+    width: 100%;
+  }
+  
+  .table {
+    margin-top: 20px;
+  }
+  
+  .quantity-input {
+    width: 80px;
+  }
+  
+  .subtotal {
+    margin-top: 20px;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: right;
+   
+  }
+  
